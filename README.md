@@ -1,5 +1,7 @@
 # All I know about GHO 
 
+All links: https://linktr.ee/aavelinks
+
 ## GHO
 
 ### What is it?
