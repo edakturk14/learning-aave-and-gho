@@ -7,11 +7,30 @@ All links: https://linktr.ee/aavelinks
 ### What is it?
 GHO is Aave's native stablecoin.
 
-- Governed by the Aave DAO, it has a new concept called "facilitators" who are authorized bu the Aave DAO to mint GHO. 
+- Governed by the Aave DAO, it has a new concept called "[facilitators](https://docs.gho.xyz/concepts/how-gho-works/gho-facilitators)." A Facilitator is a  protocol or an entity who are authorized bu the Aave DAO to mint GHO. 
 - Over-collateralized: Users must supply assets exceeding the value of the GHO they wish to mint.
 
 ### How it works?
 GHO is an ERC20 token designed to maintain a stable value, pegged to the US Dollar.
+
+GHO is minted and burned by the smart contracts on demand when a user borrows and repays from the facilitators.
+
+![borrow gho image](borrow-gho.png)
+
+#### Borrow GHO 
+Here are the steps of how the process works:
+1. Provide Collateral: User supplies 1 ETH as collateral to the Aave Protocol.
+2. Receive aWETH: In return, the user receives 1aWETH.
+3. Borrow GHO: The user borrows 10 GHO (this process is known as minting).(There can be a discount on the borrow rate if the user is holding stkAAVE.)
+4. Acquire Debt Tokens: Upon borrowing, the user receives 10 debt tokens.
+5. Interest Accrual: After a short period, the debt increases slightly to 10.00000008 variableDebtEthGHO due to accrued interest.
+
+#### Supply of GHO 
+GHO is not supplied. It is minted by the facilitator on demand.
+
+Important note here is that because there is no supply of GHO, the interst rate are not determined based on the utlization but instread by the Aave governance. 
+
+When the user pays the GHO they have borrowed (aka their debt position) the GHO is burned by the facilitator and the interest is sent to the GHO treasury.
 
 ### Using GHO 
 
@@ -110,3 +129,18 @@ contract GhoTest is StdCheats, Test {
 ```sh
 forge t --match-test testMintGho
 ```
+
+---
+
+- Permit: The permit function (provided by the EIP2612) allows another account (or contract) to use the funds by a signed message. This enables single approval/transfer and gas-less transactions.
+```Solidity
+function permit(
+    address owner,
+    address spender,
+    uint256 value,
+    uint256 deadline,
+    uint8 v,
+    bytes32 r,
+    bytes32 s
+  ) public virtual
+  ```sh
