@@ -4,13 +4,25 @@ All links: https://linktr.ee/aavelinks
 
 ## GHO
 
-### What is it?
-GHO is Aave's native stablecoin.
+GHO is a decentralized stablecoin native to the AAVE protocol.
 
-- Governed by the Aave DAO, it has a new concept called "[facilitators](https://docs.gho.xyz/concepts/how-gho-works/gho-facilitators)." A Facilitator is a  protocol or an entity who are authorized bu the Aave DAO to mint GHO. 
-- Over-collateralized: Users must supply assets exceeding the value of the GHO they wish to mint.
+### AAVE Protocol 
 
-### How it works?
+AAVE protocol is a decentralized finance (DeFi) platform that allows users to lend and borrow crypto.
+
+There are 3 actors in the protocol: suppliers, borrowers, and liquidators
+1. **Suppliers**: Users who provide liquidity to the protocol by depositing their cryptocurrencies into a liquidity pool. In return, they earn interest on their deposits.
+2. **Borrowers**: Users who draw liquidity from these pools by taking out loans. They need to put up collateral (usually more valuable than the loan they are taking) to ensure the safety of the loan. Borrowers pay interest on the loans they take, which is distributed to the suppliers.
+3. **Liquidators**: They play a crucial role in maintaining the health and stability of the AAVE protocol. Their primary function is to monitor loans and ensure that they remain sufficiently collateralized (i.e., the value of the collateral remains higher than the value of the loan). If a borrower's collateral value falls below a certain threshold (due to price fluctuations in the cryptocurrency market), the position is considered undercollateralized and can be liquidated.
+
+*Interacting with GHO on the AAVE protocol is directly as interacting with any other asset of the protocol. - this is what is meant by GHO being native to the Aave Protocol.*
+
+### GHO Properties 
+- **Over-collateralized**: Users must supply assets exceeding the value of the GHO they wish to mint.
+- **GHO is minted not supplied.**: GHO, unlike other tokens, is minted rather than supplied. When you borrow on the protocol, you receive GHO, which is minted at that moment instead of being drawn from pre-existing supplies. The borrowing rate for GHO is not set by market dynamics but is determined by AAVE governance (1 USD). Additionally, there's a discount mechanism in place for stkAAVE holders, allowing them to borrow at lower rates based on their staked assets.
+- **Governed by the Aave DAO**: GHO introduces a new concept called "[facilitators](https://docs.gho.xyz/concepts/how-gho-works/gho-facilitators)." A Facilitator is a  protocol or an entity who are authorized bu the Aave DAO to mint GHO.
+
+### But really - how does it works?
 GHO is an ERC20 token designed to maintain a stable value, pegged to the US Dollar.
 
 GHO is minted and burned by the smart contracts on demand when a user borrows and repays from the facilitators.
@@ -32,7 +44,7 @@ Important note here is that because there is no supply of GHO, the interst rate 
 
 When the user pays the GHO they have borrowed (aka their debt position) the GHO is burned by the facilitator and the interest is sent to the GHO treasury.
 
-### Using GHO 
+## Building with GHO 
 
 Based on the workshop here: https://github.com/miguelmtzinf/gho-solidity-workshop
 
